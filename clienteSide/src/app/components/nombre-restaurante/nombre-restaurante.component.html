@@ -1,0 +1,29 @@
+<h1>Los mejores restaurante de comida {{resTipo1}}</h1>
+<div class="row" *ngFor="let item of datosRes">
+  <div class="thumbnail">
+    <div class="caption">
+      <h2>Tipo de comida:</h2>
+      <h2 #nombreR >
+        {{item.nombreRestaurante}}
+
+      </h2>
+      <h4>
+        {{item.direccion.calle}}
+      </h4>
+      <h4>
+        {{item.direccion.colonia}}
+      </h4>
+      <h4>
+        {{item.direccion.numero}}
+      </h4>
+      <h4>
+        {{item.direccion.codigoPost}}
+      </h4>
+      <h4>
+        {{item.direccion.delegacion}}
+      </h4>
+      <p><a class="btn btn-primary" [routerLink]="['/menuRes']" (click)="nombreResFun(nombreR)">Ver Menú</a> </p>
+      <p><a class="btn btn-primary" [routerLink]="['/reservacion']" (click)="nombreResFun(nombreR)">Hacer una Reservación</a> </p>
+    </div>
+  </div>
+</div>

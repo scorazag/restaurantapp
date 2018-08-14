@@ -1,0 +1,21 @@
+<h1>
+  Bienvenido a {{menR}}
+</h1>
+
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel *ngFor="let item of menu;">
+    <ng-template ngbPanelTitle>
+      <span>{{item.nombreCat}}</span>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <div class="container">
+        <div class="row" *ngFor="let plat of item.platillo">
+          <h3>{{ plat.nombrePlatillo }}</h3>
+          <br>
+          <p>{{ plat.descriPlatillo }}</p>
+          {{ plat.precioPlatillo }}
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

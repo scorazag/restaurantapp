@@ -1,0 +1,49 @@
+<h1>hola realiza una reservacion a a {{resN}}</h1>
+<form >
+  <legend>Completa los datos de reservación</legend>
+  <div class="form-group">
+  <label for="exampleSelect1">Selecciona el numero de personas</label>
+  <select class="form-control" [(ngModel)]="persona" name="persona">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</div>
+  <div class="form-group">
+    <div class="input-group">
+      <label>Que dia:</label>
+      <input class="form-control" placeholder="yyyy-mm-dd"
+             name="dp" [(ngModel)]="dia" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+          <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+<label>A que hora :</label>
+<ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+<hr/>
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="mostarReserv(content)">Modal vertically centered</button>
+
+<!-- popup de cnfrmacion-->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h2 class="modal-title">Reservacion en {{resN}}</h2>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h5>Para : {{persona}} personas </h5>
+    <h5>El dia : {{dia.day}} de {{dia.month}} del {{dia.year}}</h5>
+    <h5>A las {{time.hour}}:{{time.minute}}</h5>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="c('Close click')">Cerrar</button>
+    <button type="button" class="btn btn-light" (click)="confirmar()">Confirmar</button>
+  </div>
+</ng-template>
