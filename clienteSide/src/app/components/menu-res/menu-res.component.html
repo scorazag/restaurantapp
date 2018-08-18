@@ -10,12 +10,66 @@
     <ng-template ngbPanelContent>
       <div class="container">
         <div class="row" *ngFor="let plat of item.platillo">
-          <h3>{{ plat.nombrePlatillo }}</h3>
-          <br>
-          <p>{{ plat.descriPlatillo }}</p>
-          {{ plat.precioPlatillo }}
+          <div class="col-lg">
+            <h3>{{ plat.nombrePlatillo }}</h3>
+            <br>
+            {{ plat.descriPlatillo }}
+          </div>
+          <div class="col-lg">
+            {{ plat.precioPlatillo }}
+          </div>
+          <div class="col-lg">
+            <button type="button" class="btn btn-primary btn-lg" (click)="platilloSeleccionado(plat)">Añadir</button>
+          </div>
         </div>
       </div>
     </ng-template>
   </ngb-panel>
 </ngb-accordion>
+
+<button type="button" class="btn btn-primary btn-lg" (click)="verCuenta(content)">Ver Cuenta</button>
+
+<!-- popup de cnfrmacion-->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h3 class="modal-title">Gracias por comprar en {{menR}} tu cuenta es:</h3>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Platillo</th>
+          <th scope="col">Precio $</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let plt of carro">
+        <tr>
+          <th>{{plt.nombrePlatillo}}</th>
+          <th>{{plt.precioPlatillo}}</th>
+        </tr>
+
+      </tbody>
+      <h2>Total de : {{total}}</h2>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="c('Close click')">Cerrar</button>
+    <button type="button" class="btn btn-light" (click)="confirmar()">Confirmar</button>
+  </div>
+</ng-template>
+
+<h1>{{ title }}</h1>
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng">
+    <agm-info-window>
+      <h3><strong>Hola!!</strong></h3>
+      <p>Tu estas aqui!!</p>
+    </agm-info-window>
+  </agm-marker>
+</agm-map>

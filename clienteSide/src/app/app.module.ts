@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes} from '@angular/router';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule } from '@agm/core';
+
 
 //componentes donde va el contenido
 import { AppComponent } from './app.component';
@@ -70,7 +72,10 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCiSbEGCcU7fr2JGVS4xh38kAymBdvHxFU'
+    })
   ],
   providers: [ValidateService, AuthService,MenuService,DatosService],
   bootstrap: [AppComponent]
