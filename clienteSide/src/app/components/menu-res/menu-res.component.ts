@@ -27,7 +27,8 @@ export class MenuResComponent implements OnInit {
   constructor(private menuService:MenuService, private router:Router,private datosService:DatosService,private modalService: NgbModal) { }
 
   ngOnInit() {
-    console.log("hola desde men Res")
+    document.body.classList.add('bg-menu');
+    console.log("hola desde men Res");
     this.datosService.cast1.subscribe(resta => this.menR = resta);
     console.log(this.menR);
     this.menuService.getMenuRes(this.menR).subscribe(menuA => {

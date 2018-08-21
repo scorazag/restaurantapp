@@ -1,16 +1,28 @@
-<h1>MEMEMEME</h1>
-<div class="row" *ngFor="let item of tiposRes">
-  <!--Aqui empieza comida mexicana-->
+<div class="row">
+  <div id="baner1">
+    <h1>Bienvenido!!</h1>
+    <h2 aling="center">Selecciona un tipo de comida para concer los restaurantes</h2>
+  </div>
+</div>
 
-    <div class="thumbnail">
-      <img src="..." alt="...">
-      <div class="caption">
-        <h2>Tipo de comida:</h2>
-        <h3 #nombreS >
-          {{item.tipo}}
-          
-        </h3>
-        <p><a class="btn btn-primary" [routerLink]="['/nombreRes']" (click)="nombreTipo(nombreS)">Ir a Restaurantes</a> </p>
+<div class="container">
+  <div id="baner2">
+    <h2>Tipos de comida:</h2>
+  </div>
+  <div class="row">
+    <div class="col-md" align="center"  *ngFor="let item of tiposRes">
+    <!--Aqui empieza comida mexicana-->
+    <div [ngSwitch] = "item.tipo" align="center">
+      <img *ngSwitchCase="'francesa'" [src]="imgFra" height="102" width="140">
+      <img *ngSwitchCase="'mexicana'" [src]="imgMex" height="102" width="140">
+      <img *ngSwitchCase="'japonesa'" [src]="imgJap" height="102" width="140">
+      <div class="col-md" align="center" >
+          <h3 #nombreS >
+            {{item.tipo}}
+          </h3>
+          <p><a class="btn btn-primary" [routerLink]="['/nombreRes']" (click)="nombreTipo(nombreS)">Ir a Restaurantes</a> </p>
       </div>
     </div>
+  </div>
+</div>
 </div>

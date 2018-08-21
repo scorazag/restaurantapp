@@ -1,22 +1,42 @@
-
-<h2 class="page-header"> Registrate es Gratis!!!</h2>
-<form (submit)="onRegisterSubmit()">
-  <div class="from-group">
-    <label>Nombre</label>
-    <input type="text" [(ngModel)]="name" name="nombre" class="from-control" />
+<div class="container">
+  <h2> Registrate es completamente Gratis !!!</h2>
+  <div class="jumbotron">
+    <img src="assets/images/dino-login.jpg" class="rounded-circle"  width="294" height="216"/>
+    <hr />
+    <form (submit)="onRegisterSubmit()" class="formulario">
+      <div class="row">
+        <div class="col-25">
+          <label class="texto">Nombre:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="name" name="nombre" class="from-control" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label class="texto">Celular:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="celular" name="celular" class="from-control" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label class="texto">Email:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="email" name="email" class="from-control" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label class="texto">Password:</label>
+        </div>
+        <div class="col-75">
+          <input type="password" [(ngModel)]="password" name="password" class="from-control" />
+        </div>
+      </div>
+      <button type="submit"class="btn btn-info btn-block" >Registrarse</button>
+    </form>
   </div>
-
-  <div class="from-group">
-    <label>Celular</label>
-    <input type="text" [(ngModel)]="celular" name="celular" class="from-control" />
-  </div>
-  <div class="from-group">
-    <label>Email</label>
-    <input type="text" [(ngModel)]="email" name="email" class="from-control" />
-  </div>
-  <div class="from-group">
-    <label>Password</label>
-    <input type="text" [(ngModel)]="password" name="password" class="from-control" />
-  </div>
-  <input type="submit" class="btn btn-primary" value="enviar" />
-</form>
+</div>

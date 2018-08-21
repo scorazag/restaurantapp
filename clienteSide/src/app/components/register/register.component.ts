@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    document.body.classList.add('bg-reg');
   }
 
   onRegisterSubmit(){

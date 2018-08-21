@@ -15,9 +15,15 @@ export class DashboardComponent implements OnInit {
   tipoRR : Object;
   resTipo: String;
 
+  imgMex = "/assets/images/bandmexico.jpg";
+  imgFra = "/assets/images/bandfrancia.png";
+  imgJap = "/assets/images/bandjapon.jpg";
+
   constructor(private menuService:MenuService, private router:Router,private datosService:DatosService) { }
 
   ngOnInit() {
+    document.body.classList.add('bg-menu');
+
     this.menuService.getTipoMenu().subscribe(Tipo =>{
       this.tiposRes = Tipo.restaurante;
       console.log(this.tiposRes);

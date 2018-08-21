@@ -1,29 +1,27 @@
-<h1>Los mejores restaurante de comida {{resTipo1}}</h1>
-<div class="row" *ngFor="let item of datosRes">
-  <div class="thumbnail">
-    <div class="caption">
-      <h2>Tipo de comida:</h2>
-      <h2 #nombreR >
-        {{item.nombreRestaurante}}
+<div class="row">
+  <div id="baner1">
+    <h1>Los mejores restaurante de comida {{resTipo1}}</h1>
+  </div>
+</div>
 
-      </h2>
-      <h4>
-        {{item.direccion.calle}}
-      </h4>
-      <h4>
-        {{item.direccion.colonia}}
-      </h4>
-      <h4>
-        {{item.direccion.numero}}
-      </h4>
-      <h4>
-        {{item.direccion.codigoPost}}
-      </h4>
-      <h4>
-        {{item.direccion.delegacion}}
-      </h4>
-      <p><a class="btn btn-primary" [routerLink]="['/menuRes']" (click)="nombreResFun(nombreR)">Ver Menú</a> </p>
-      <p><a class="btn btn-primary" [routerLink]="['/reservacion']" (click)="nombreResFun(nombreR)">Hacer una Reservación</a> </p>
+<div class="container">
+  <h2>Restaurantes:</h2>
+  <div class="row borde" *ngFor="let item of datosRes">
+    <div class="col" id="infoRes">
+      <h3 #nombreR >{{item.nombreRestaurante}}</h3>
+      <dl>Dirección:</dl>
+      <dd>
+        {{item.direccion.calle}},{{item.direccion.colonia}},{{item.direccion.numero}},{{item.direccion.codigoPost}},{{item.direccion.delegacion}}
+      </dd>
     </div>
+    <div class="col botones" align="center">
+      <p><a class="btn btn-primary" [routerLink]="['/menuRes']" (click)="nombreResFun(nombreR)">Ver Menú</a> </p>
+    </div>
+    <div class="col botones" align="center">
+      <p ><a class="btn btn-primary" [routerLink]="['/reservacion']" (click)="nombreResFun(nombreR)">Hacer una Reservación</a> </p>
+    </div>
+    <hr>
+    <hr >
+
   </div>
 </div>

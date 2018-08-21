@@ -1,0 +1,33 @@
+h1
+{
+  font-size: 50px;
+}
+
+h2
+{
+  font-size: 40px;
+}
+
+#baner2
+{
+  text-align: center;
+
+}
+
+.container
+{
+  position: absolute;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 0 auto;
+  left: 480px;
+  top: 250px;
+}
+
+#baner1
+{
+  text-align: center;
+  margin-left: 280px;
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.5);
+}

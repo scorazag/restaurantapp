@@ -18,7 +18,8 @@ export class NombreRestauranteComponent implements OnInit {
   constructor(private menuService:MenuService, private router:Router,private datosService:DatosService) { }
 
   ngOnInit() {
-    
+    document.body.classList.add('bg-menu');
+
     this.datosService.cast.subscribe(tipo => this.resTipo1 = tipo);
     this.menuService.getNombreRes(this.resTipo1).subscribe(datos => {
       this.datosRes = datos.restaurante[0].restaurante;

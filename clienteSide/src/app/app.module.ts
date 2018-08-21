@@ -24,6 +24,7 @@ import { DatosService } from './services/datos.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ReservacionComponent } from './components/reservacion/reservacion.component';
 import { MenuResComponent } from './components/menu-res/menu-res.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 const appRoutes: Routes = [
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     NombreRestauranteComponent,
     ReservacionComponent,
-    MenuResComponent
+    MenuResComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

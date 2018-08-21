@@ -17,6 +17,7 @@ export class ReservacionComponent implements OnInit {
   constructor(private router:Router,private datosService:DatosService,private modalService: NgbModal) { }
 
   ngOnInit() {
+    document.body.classList.add('bg-menu');
     this.datosService.cast1.subscribe(resta => this.resN = resta);
     console.log(this.resN);
   }
