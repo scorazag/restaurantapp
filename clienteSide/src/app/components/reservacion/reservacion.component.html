@@ -45,7 +45,9 @@
 
 
 <!-- popup de cnfrmacion-->
-<ng-template #content let-c="close" let-d="dismiss">
+
+<ng-template #content let-c="close" let-d="dismiss" >
+
   <div class="modal-header">
     <h2 class="modal-title">Reservacion en {{resN}}</h2>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -56,9 +58,11 @@
     <h5>Para : {{persona}} personas </h5>
     <h5>El dia : {{dia.day}} de {{dia.month}} del {{dia.year}}</h5>
     <h5>A las {{time.hour}}:{{time.minute}}</h5>
+
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-light" (click)="c('Close click')">Cerrar</button>
     <button type="button" class="btn btn-light" (click)="confirmar()">Confirmar</button>
   </div>
+
 </ng-template>

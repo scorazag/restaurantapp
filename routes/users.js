@@ -12,8 +12,10 @@ router.post('/register', (req,res,next) => {
     nombre: req.body.nombre,
     apellido: req.body.apellido,
     celular: req.body.celular,
+    edad:req.body.edad,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    historial:req.body.historial
   });
 
   User.addUser(newUser, (err,user) =>{
@@ -67,6 +69,42 @@ router.get('/profile', passport.authenticate('jwt',{session:false}), (req,res,ne
 });
 router.get('/validate', (req,res,next) => {
   res.send("validate");
+});
+
+router.post('/updateHisto',(req,res,next) =>{
+
+  const emailt=req.body.email;
+
+  const historial = {
+    restaurante:req.body.restaurante,
+    tipoCompra: req.body.tipoCompra,
+    total: req.body.total,
+    ticket: req.body.ticket
+  }
+  User.update({email:emailt},{$push:{"historial":historial}}).then(function (historial) {
+    res.json(historial);
+  });
+  console.log("imprimeo lo que viene del req");
+  console.log(historial);
+});
+
+router.post('/updateConfirm',(req,res,next) =>{
+
+  const emailt=req.body.email;
+
+  const historial = {
+    restaurante:req.body.restaurante,
+    tipoCompra: req.body.tipoCompra,
+    total: req.body.total,
+    personas: req.body.persona,
+    dia:req.body.dia,
+    hora:req.body.hora
+  }
+  User.update({email:emailt},{$push:{"historial":historial}}).then(function (historial) {
+    res.json(historial);
+  });
+  console.log("imprimeo lo que viene del req");
+  console.log(historial);
 });
 
 module.exports = router;

@@ -15,8 +15,10 @@ export class ProfileComponent implements OnInit {
   constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit() {
+    document.body.classList.add('bg-menu');
     this.authService.getProfile().subscribe(profile =>{
       this.user = profile.user;
+      console.log(this.user)
     },
     err => {
       console.log("err");

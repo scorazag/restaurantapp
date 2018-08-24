@@ -20,6 +20,16 @@
           <input type="text" [(ngModel)]="celular" name="celular" class="from-control" />
         </div>
       </div>
+      <!--asdfghjkl-->
+      <div class="row">
+        <div class="col-25">
+          <label class="texto">Edad:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="edad" name="edad" class="from-control" />
+        </div>
+      </div>
+      <!--asdfghjkl-->
       <div class="row">
         <div class="col-25">
           <label class="texto">Email:</label>
@@ -33,7 +43,9 @@
           <label class="texto">Password:</label>
         </div>
         <div class="col-75">
-          <input type="password" [(ngModel)]="password" name="password" class="from-control" />
+          <show-hide-password size="sm" icon="entypo">
+            <input type="password" [(ngModel)]="password" name="password" class="from-control" />
+          </show-hide-password>
         </div>
       </div>
       <button type="submit"class="btn btn-info btn-block" >Registrarse</button>

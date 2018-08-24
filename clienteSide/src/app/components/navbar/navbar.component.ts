@@ -9,10 +9,18 @@ import { Router } from '@angular/router'
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  user : String;
   constructor(private authService:AuthService,private router:Router) { }
 
   ngOnInit() {
+    this.authService.getProfile().subscribe(profile =>{
+      this.user = profile.user;
+      console.log(this.user)
+    },
+    err => {
+      console.log("err");
+      return false;
+    });
   }
   onLogoutClick(){
     this.authService.logout();

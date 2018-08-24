@@ -11,6 +11,9 @@ const UserSchema = mongoose.Schema({
     type: Number,
     required: true
   },
+  edad: {
+    type: Number
+  },
   email: {
     type: String,
     required: true
@@ -18,6 +21,11 @@ const UserSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  historial: {
+    type:[
+      'Mixed'
+    ]
   }
 });
 

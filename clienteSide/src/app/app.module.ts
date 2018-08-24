@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes} from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
-
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 //componentes donde va el contenido
 import { AppComponent } from './app.component';
@@ -75,6 +75,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
     NgbModule.forRoot(),
+    ShowHidePasswordModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCiSbEGCcU7fr2JGVS4xh38kAymBdvHxFU'
     })

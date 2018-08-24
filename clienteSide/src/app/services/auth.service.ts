@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http,Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { tokenNotExpired } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -42,7 +43,11 @@ export class AuthService {
     localStorage.setItem('user',JSON.stringify(user));
     this.authToken = token;
     this.user = user;
+    console.log(this.authToken);
   }
+
+  //jwtHelper: JwtHelper = new JwtHelper();
+
 
   loadToken(){
     const token = localStorage.getItem('id_token');
@@ -50,12 +55,25 @@ export class AuthService {
   }
 
   loggedIn() {
-    return tokenNotExpired();
+     return tokenNotExpired('id_token');
   }
 
   logout(){
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+  }
+
+  updateHisto(historial){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/users/updateHisto',historial,{headers:headers})
+      .map(res => res.json());
+  }
+  updateConfirm(historial){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/users/updateConfirm',historial,{headers:headers})
+      .map(res => res.json());
   }
 }

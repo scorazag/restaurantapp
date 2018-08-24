@@ -1,11 +1,52 @@
-<div>
-  <h1> {{user.nombre}}</h1>
-  <ul>
-    <li>
-      {{user.celular}}
-    </li>
-    <ul>
-      {{user.email}}
-    </ul>
-  </ul>
+<div class="row">
+  <div id="baner1">
+    <h1>Perfil de {{user.nombre}}</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col" align="center">
+        <img src="/assets/images/perfil.png" height="200" width="200"/>
+      </div>
+      <div class="col">
+        <div class="row">
+          <strong>Nombre:</strong>
+        </div>
+        <div class="row">
+          <strong>Edad:</strong>
+        </div>
+        <div class="row">
+          <strong>Celular:</strong>
+        </div>
+        <div class="row">
+          <strong>Correo:</strong>
+        </div>
+        <div class="row">
+          <strong>Password:</strong>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row">
+          {{user.nombre}}
+        </div>
+        <div class="row">
+          {{user.edad}}
+        </div>
+        <div class="row">
+          {{user.celular}}
+        </div>
+        <div class="row">
+          {{user.email}}
+        </div>
+        <div class="row">
+          <show-hide-password size="lg" icon="entypo">
+            <input type="password" value="{{user.password}}" >
+          </show-hide-password>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

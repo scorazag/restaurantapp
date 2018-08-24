@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 import { MenuService } from '../../services/menu.service';
 import { DatosService } from '../../services/datos.service';
 import { Router } from '@angular/router'
@@ -13,6 +14,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class MenuResComponent implements OnInit {
 
+  user: Object;
   menR: String;
   menu: Object;
   public carro = [];
@@ -24,11 +26,19 @@ export class MenuResComponent implements OnInit {
   lng: number ;
 
 
-  constructor(private menuService:MenuService, private router:Router,private datosService:DatosService,private modalService: NgbModal) { }
+  constructor(private authService:AuthService,private menuService:MenuService, private router:Router,private datosService:DatosService,private modalService: NgbModal) { }
 
   ngOnInit() {
     document.body.classList.add('bg-menu');
     console.log("hola desde men Res");
+    this.authService.getProfile().subscribe(profile =>{
+      this.user = profile.user.email;
+      console.log(this.user)
+    },
+    err => {
+      console.log("err");
+      return false;
+    });
     this.datosService.cast1.subscribe(resta => this.menR = resta);
     console.log(this.menR);
     this.menuService.getMenuRes(this.menR).subscribe(menuA => {
@@ -61,6 +71,26 @@ export class MenuResComponent implements OnInit {
         this.lng = position.coords.longitude;
       });
     }
+  }
+
+  confirmar(){
+
+    const historial = {
+      email: this.user,
+      restaurante: this.menR,
+      tipoCompra: "compra",
+      total: this.total,
+      ticket:this.carro
+    }
+    console.log(historial);
+    this.authService.updateHisto(historial).subscribe(flag => {
+      if(flag.ok =1){
+        console.log("se se guadro bandita")
+        this.router.navigate(['dashboard']);
+      } else {
+        console.log("salio mal carnal");
+      }
+    });
   }
 
 }

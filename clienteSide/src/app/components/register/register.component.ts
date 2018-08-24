@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   email: String;
   password: String;
   celular: String;
+  edad: String;
 
   constructor(
     private validateService: ValidateService,
@@ -31,16 +32,19 @@ export class RegisterComponent implements OnInit {
     const user = {
       nombre: this.name,
       celular : this.celular,
+      edad:this.edad,
       email: this.email,
       password: this.password
     }
 
     if(!this.validateService.validateRegister(user)){
       console.log("LLena todos los campos");
+      alert("Por favor llena todos los campos");
       return false;
     }
     if(!this.validateService.validateEmail(user.email)){
       console.log("El email no es valido");
+      alert("El email no es valido");
       return false;
     }
     //registro de usuarios
