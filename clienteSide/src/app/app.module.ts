@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes} from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper  } from '@agm/core';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 //componentes donde va el contenido
@@ -25,6 +25,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ReservacionComponent } from './components/reservacion/reservacion.component';
 import { MenuResComponent } from './components/menu-res/menu-res.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HistorialComponent } from './components/historial/historial.component';
 
 
 const appRoutes: Routes = [
@@ -51,6 +52,9 @@ const appRoutes: Routes = [
   },
   {
     path:'menuRes', component: MenuResComponent
+  },
+  {
+    path:'historial',component: HistorialComponent
   }
 ]
 
@@ -66,7 +70,8 @@ const appRoutes: Routes = [
     NombreRestauranteComponent,
     ReservacionComponent,
     MenuResComponent,
-    FooterComponent
+    FooterComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +85,7 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyCiSbEGCcU7fr2JGVS4xh38kAymBdvHxFU'
     })
   ],
-  providers: [ValidateService, AuthService,MenuService,DatosService],
+  providers: [ValidateService, AuthService,MenuService,DatosService,GoogleMapsAPIWrapper],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

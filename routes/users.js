@@ -2,9 +2,20 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 
 const config = require('../config/database');
 const User = require('../models/user');
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: 'esas23m6ammgj3dd@ethereal.email',
+        pass: 'ATaMzvHFTXuPtNU6hn'
+    }
+});
+
 
 router.post('/register', (req,res,next) => {
 
@@ -23,6 +34,19 @@ router.post('/register', (req,res,next) => {
       res.json({success:false,msg:'Fallo al registrar'});
     } else {
       res.json({success:true,msg:'Usado registrado'});
+      const mailOptions = {
+        from: 'esas23m6ammgj3dd@ethereal.email', // sender address
+        to: newUser.email, // list of receivers
+        subject: 'Bienvenido a Dino Delivery' , // Subject line
+        html: '<p> Hola  te Damos la bienvenida a Dino Delivery</p>'
+      };
+      console.log("Aqui se ejecutando el sendmail");
+      transporter.sendMail(mailOptions, function (err, info) {
+       if(err)
+         console.log(err)
+       else
+         console.log(info);
+       });
     }
   });
 });
@@ -86,6 +110,22 @@ router.post('/updateHisto',(req,res,next) =>{
   });
   console.log("imprimeo lo que viene del req");
   console.log(historial);
+    console.log("Aqui vemos lo que se manda en el mail");
+
+  const mailOptions = {
+    from: 'esas23m6ammgj3dd@ethereal.email', // sender address
+    to: emailt, // list of receivers
+    subject: 'Compra en' + historial.restaurante, // Subject line
+    html: '<p>'+historial.tipoCompra+'</p>'+'<p>'+historial.total+'</p>'+'<table style="width:100%">'+historial.ticket.forEach((item =>{ '<p>'+item.nombrePlatillo+'</p>'}))+'</table>'
+  };
+  console.log("Aqui se ejecutando el sendmail");
+  transporter.sendMail(mailOptions, function (err, info) {
+   if(err)
+     console.log(err)
+   else
+     console.log(info);
+   });
+
 });
 
 router.post('/updateConfirm',(req,res,next) =>{
@@ -105,6 +145,19 @@ router.post('/updateConfirm',(req,res,next) =>{
   });
   console.log("imprimeo lo que viene del req");
   console.log(historial);
+  const mailOptions = {
+    from: 'esas23m6ammgj3dd@ethereal.email', // sender address
+    to: emailt, // list of receivers
+    subject: 'Reservación en' + historial.restaurante, // Subject line
+    html: '<p>'+historial.tipoCompra+'</p>'+'<p>'+historial.total+'</p>'+'<p> Para:'+historial.personas+'</p>'
+  };
+  console.log("Aqui se ejecutando el sendmail");
+  transporter.sendMail(mailOptions, function (err, info) {
+   if(err)
+     console.log(err)
+   else
+     console.log(info);
+   });
 });
 
 module.exports = router;

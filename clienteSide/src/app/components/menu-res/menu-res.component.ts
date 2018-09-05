@@ -4,6 +4,9 @@ import { MenuService } from '../../services/menu.service';
 import { DatosService } from '../../services/datos.service';
 import { Router } from '@angular/router'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { MapsAPILoader, AgmMap } from '@agm/core';
+import { GoogleMapsAPIWrapper } from '@agm/core/services';
+import { google } from '@agm/core/services/google-maps-types';
 
 
 
@@ -14,6 +17,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class MenuResComponent implements OnInit {
 
+  geocoder:any;
   user: Object;
   menR: String;
   menu: Object;
@@ -21,12 +25,12 @@ export class MenuResComponent implements OnInit {
   public suma = [];
   public total = 0;
 
-  title: string = 'My first AGM project';
   lat: number ;
   lng: number ;
 
 
-  constructor(private authService:AuthService,private menuService:MenuService, private router:Router,private datosService:DatosService,private modalService: NgbModal) { }
+
+  constructor(private authService:AuthService,private menuService:MenuService, private router:Router,private datosService:DatosService,private modalService: NgbModal,public mapsApiLoader: MapsAPILoader,private wrapper: GoogleMapsAPIWrapper) { }
 
   ngOnInit() {
     document.body.classList.add('bg-menu');
@@ -71,6 +75,7 @@ export class MenuResComponent implements OnInit {
         this.lng = position.coords.longitude;
       });
     }
+
   }
 
   confirmar(){
